@@ -1,0 +1,164 @@
+.wrapper {
+  min-height: 100%;
+}
+
+._container {
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.header {
+  width: 100%;
+}
+.header ._container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header ._container .header__logo, .header ._container .header__link, .header ._container .header__profile {
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: "Clash Grotesk Variable", sans-serif;
+}
+.header ._container .header__logo {
+  font-weight: bold;
+}
+.header ._container .header__links {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.home {
+  min-height: 100vh;
+}
+
+.home__body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.home__container {
+  z-index: 2;
+  height: 65%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home__banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home__title, .home__subtitle {
+  cursor: default;
+}
+
+.home__title {
+  display: inline;
+  font-size: 7.5rem;
+  font-family: "Clash Grotesk Variable", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2.4px;
+  background: linear-gradient(90deg, #4F68EC 0%, #85BDFF 30%, #FF1FF8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home__subtitle {
+  width: 70%;
+  color: #FFF;
+  text-align: center;
+  font-family: "Cabinet Grotesk Variable", sans-serif;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 156%; /* 156% */
+  letter-spacing: 0.045rem;
+}
+
+.home__button {
+  width: 20%;
+  border-radius: 100px;
+  border: 2px solid #FF3BFF;
+  background: #000;
+  color: #FFF;
+  text-align: center;
+  font-family: "Cabinet Grotesk Variable", sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 173.333%;
+  letter-spacing: 0.045rem;
+}
+
+.home__images {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  z-index: 1;
+}
+
+.images-parallax__item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.images-parallax__stars,
+.images-parallax__planets,
+.images-parallax__moon {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.images-parallax__stars {
+  background: url("../../src/assets/Main page/background7.jpg") top/contain no-repeat;
+  transform: rotate(180deg);
+  top: 0;
+}
+
+.images-parallax__planets {
+  background: url("../../src/assets/Main page/planets@0,5x.png") bottom/cover no-repeat;
+  z-index: 2;
+  transform: scale(95%);
+  top: 5px;
+}
+
+@media (max-aspect-ratio: 3/2) {
+  .images-parallax__moon {
+    transform: scale(-20%);
+  }
+}
+.content {
+  z-index: 2;
+  position: relative;
+}
+
+.blur {
+  background: linear-gradient(180deg, #14022C 50%, #050319 50%);
+  opacity: 1;
+  width: 100%;
+  height: 100px;
+}
+
+.ads {
+  background: linear-gradient(180deg, #050319 -1.68%, #210B22 46.8%, #242330 95.28%);
+}
+
+/*# sourceMappingURL=Home.css.map */
