@@ -79,6 +79,7 @@ export const AnimatedText = ({
                 ref={ref}
                 initial="hidden"
                 animate={controls}
+                style={{overflowWrap: "break-word", wordBreak: 'keep-all', overflow: "hidden"}}
                 variants={{
                     visible: { transition: { staggerChildren: 0.01 } },
                     hidden: {},
@@ -88,7 +89,7 @@ export const AnimatedText = ({
                 {textArray.map((line, lineIndex) => (
                     <span className="block" key={`${line}-${lineIndex}`}>
             {line.split(" ").map((word, wordIndex) => (
-                <span className="inline-block" key={`${word}-${wordIndex}`}>
+                <span style={{whiteSpace: "nowrap"}} className="inline-block" key={`${word}-${wordIndex}`}>
                 {word.split("").map((char, charIndex) => (
                     <motion.span
                         key={`${char}-${charIndex}`}

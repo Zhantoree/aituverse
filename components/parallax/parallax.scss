@@ -1,3 +1,5 @@
+@import "../../src/mixins";
+
 .parallax-wrapper {
   width: 100%;
   height: 100vh;
@@ -19,8 +21,7 @@
 }
 
 .images-parallax__planets-earth, .images-parallax__planets-merk,
-.images-parallax__planets-diamond
-{
+.images-parallax__planets-diamond {
   inset: 0;
   position: absolute;
   z-index: 5;
@@ -30,19 +31,20 @@
 .images-parallax__planets-earth {
   background: url("../../src/assets/Main page/earth/earth.png") bottom / cover no-repeat;
 }
+
 .images-parallax__planets-merk {
   background: url("../../src/assets/Main page/earth/merk.png") bottom / cover no-repeat;
 }
+
 .images-parallax__planets-diamond {
   background: url("../../src/assets/Main page/earth/diamond.png") bottom / cover no-repeat;
 }
 
 
-
 .images-parallax__moon {
   background: url("../../src/assets/Main page/moon.png") bottom / cover no-repeat;
   position: relative;
-  z-index: 10;
+  z-index: 20;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -57,12 +59,130 @@
     flex-direction: row;
     justify-content: space-between;
 
+    label .menu {
+      position: absolute;
+      //right: -40px;
+      @include adaptive-value('right', -100, 0, 1);
+
+      top: -15px;
+      z-index: 100;
+      width: 100px;
+      height: 100px;
+      background: #FFF;
+      border-radius: 50% 50% 50% 50%;
+      -webkit-transition: .5s ease-in-out;
+      transition: .5s ease-in-out;
+      box-shadow: 0 0 0 0 #FFF, 0 0 0 0 #FFF;
+      cursor: pointer;
+
+      @media (max-width: 600px) {
+        @include adaptive-value('right', -100, -30, 1);
+        top: -50px;
+      }
+    }
+
+    label .hamburger {
+      position: absolute;
+      top: 50px;
+      //left: 20px;
+      @include adaptive-value('left', 10, 25, 1);
+      width: 30px;
+      height: 2px;
+      background: var(--background-color);
+      display: block;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-transition: .5s ease-in-out;
+      transition: .5s ease-in-out;
+
+      @media (max-width: 600px) {
+        @include adaptive-value('left', 0, 20, 1);
+        top: 55px;
+      }
+    }
+
+    label .hamburger:after, label .hamburger:before {
+      -webkit-transition: .5s ease-in-out;
+      transition: .5s ease-in-out;
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--background-color);
+    }
+
+    label .hamburger:before {
+      top: -10px;
+    }
+
+    label .hamburger:after {
+      bottom: -10px;
+    }
+
+    label input {
+      display: none;
+    }
+
+    label input:checked + .menu {
+      box-shadow: 0 0 0 100vw #FFF, 0 0 0 100vh #FFF;
+      border-radius: 0;
+
+    }
+
+    label input:checked + .menu .hamburger {
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+
+    }
+
+    label input:checked + .menu .hamburger:after {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+      bottom: 0;
+
+    }
+
+    label input:checked + .menu .hamburger:before {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+      top: 0;
+
+    }
+
+    label input:checked + .menu + ul {
+      opacity: 1;
+    }
+
+    label ul {
+      z-index: 200;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      -webkit-transition: .25s 0s ease-in-out;
+      transition: .25s 0s ease-in-out;
+      text-align: center;
+    }
+
+    label a {
+      margin-bottom: 1em;
+      display: block;
+      color: var(--primary-color);
+      text-decoration: none;
+      @include adaptive-font(32, 26);
+
+    }
+
 
     .header__logo, .header__link, .header__profile {
       color: var(--text-color);
-      font-size: 1.5rem;
       cursor: pointer;
       font-family: 'Clash Grotesk Variable', sans-serif;
+      @include adaptive-font(24, 20);
+
     }
 
     .header__logo {
@@ -72,8 +192,14 @@
     .header__links {
       display: flex;
       width: 50%;
-
       justify-content: space-between;
+
+      @media (max-width: 992px) {
+        width: 58%;
+      }
+    }
+
+    .header__profile {
     }
   }
 }
@@ -83,7 +209,7 @@
 .home__container {
   position: absolute;
   height: 60%;
-  z-index: 20;
+  z-index: 15;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -104,10 +230,11 @@
 .home__title {
   display: inline;
   font-size: 5.5rem;
+  @include adaptive-font(88, 40);
   font-family: 'Clash Grotesk Variable', sans-serif;
   font-weight: 500;
   letter-spacing: 2.4px;
-  background: linear-gradient(90deg, #4F68EC 0%,  #85BDFF 30%, #FF1FF8 100%);
+  background: linear-gradient(90deg, #4F68EC 0%, #85BDFF 30%, #FF1FF8 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -118,7 +245,8 @@
   color: #FFF;
   text-align: center;
   font-family: "Cabinet Grotesk Variable", sans-serif;
-  font-size: 1.75rem;
+  //font-size: 1.75rem;
+  @include adaptive-font(28, 20);
   font-style: normal;
   font-weight: 400;
   line-height: 156%; /* 156% */
@@ -128,12 +256,27 @@
 
 .home__button {
   width: 20%;
+
+  //@media (max-width: 992px) {
+  //  width: 25%;
+  //}
+  @media (max-width: 768px) {
+    width: 30%;
+  }
+  @media (max-width: 576px) {
+    width: 35%;
+  }
+  @media (max-width: 445px) {
+    width: 40%;
+  }
 }
 
 
 .cta {
-  height: 100vh;
+  height: 100dvh;
   background: url("../../src/assets/Main page/stars.png") bottom / cover no-repeat;
+  overflow: hidden;
+
 
   ._container {
     position: relative;
@@ -142,21 +285,37 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    overflow: hidden;
+
+    @media (max-width: 676px) {
+      flex-direction: column;
+    }
   }
 }
 
 .cta__body {
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 10rem;
 
+  @media (max-width: 676px) {
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .cta__text {
+  width: 100%;
   color: #FFF;
   font-family: "Cabinet Grotesk Variable", sans-serif;
-  font-size: 2.5rem;
+  //font-size: 2.5rem;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  @include adaptive-font(40, 20);
   font-style: normal;
   font-weight: 800;
   line-height: 90%;
@@ -166,10 +325,28 @@
 .cta__button {
   width: 35%;
   height: 4rem;
+
+  @media (max-width: 676px) {
+    margin-top: 1rem;
+    width: 50%;
+  }
+
+  button {
+    @include adaptive-font(40, 20);
+    @include adaptive-value('border-radius', 50, 20);
+  }
 }
 
 .cta__image {
   width: 50%;
   min-height: 600px;
   background: url("../../src/assets/Main page/astronaut.png") center/contain no-repeat;
+
+  @media (max-width: 676px) {
+    width: 100%;
+  }
+}
+
+.hello {
+  width: 100%;
 }

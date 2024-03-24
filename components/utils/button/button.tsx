@@ -3,15 +3,16 @@ import {FC} from "react";
 
 interface ButtonProps {
     text: string,
-    mode?: boolean
+    mode?: boolean,
+    classNames?: string
 }
 
-const Button:FC<ButtonProps> = ({text, mode = false}) => {
+const Button:FC<ButtonProps> = ({text, mode = false, classNames}) => {
     return (
         mode ?
-            <button className="mode-button">{text}</button>
+            <button className={`mode-button ${classNames}`}>{text}</button>
             :
-            <button className="custom-button">{text}</button>
+            <button className={`custom-button ${classNames}`}>{text}</button>
 
     );
 };
