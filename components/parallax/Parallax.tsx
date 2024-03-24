@@ -34,6 +34,7 @@ const Parallax = () => {
             scrollerContent.forEach((item) => {
                 const duplicatedItem = item.cloneNode(true);
                 duplicatedItem.setAttribute("aria-hidden", 'true');
+                console.log(duplicatedItem)
                 scrollerInner?.appendChild(duplicatedItem);
             });
         });
